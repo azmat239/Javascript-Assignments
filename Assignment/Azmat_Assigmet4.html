@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculating POwer</title>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      body{
+        margin: 10px;
+        padding: 5px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        background-color: rgba(0, 255, 255, 0.273);
+      }
+      h1{
+        text-align: center;
+        box-sizing: content-box;
+        box-shadow: 5px 6px 8px rgba(0, 255, 255, 0.394),
+        4px 4px 4px gray,
+        8px 8px 8px black;
+        margin: 0;
+        padding: 5px;
+        background-color: rgba(0, 0, 255, 0.3);
+      }
+      .container{
+        margin: 90px auto;
+        height: 300px;
+        width: 70%;
+        padding: 10px;
+        border: 2px solid aqua;
+        box-sizing: border-box;
+        box-shadow: 5px 6px 8px rgba(0, 255, 255, 0.394),
+        4px 4px 4px gray,
+        8px 8px 8px red;
+        text-shadow: 2px 3px 4px rgba(0, 13, 255, 0.434);
+        background-color: rgba(0, 0, 0, 0.213);
+      }
+      input{
+        width: 60vw;
+        height: 4vh;
+        display: block;
+        padding: 8px;
+        margin: 10px 6px;
+      }
+      label{
+        margin-top: 5px;
+      }
+      input:hover{
+        box-sizing: content-box;
+        box-shadow: 5px 6px 8px rgba(0, 255, 255, 0.394);
+      }
+      button{
+        margin: 15px 45%;
+        padding: 8px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-weight: bolder;
+        font-size: large;
+        background-color: rgba(0, 0, 0, 0.554);
+        color: azure;
+        border-radius: 30%;
+      }
+      button:hover{
+        box-sizing: content-box;
+        box-shadow: 5px 6px 8px rgba(0, 255, 255, 0.394);
+        animation: mov 2s ease-in infinite 1s forwards;
+      }
+      @keyframes mov{
+        0%{
+            position:relative;
+            top: 4px;
+        }
+        10%{
+            position:relative;
+            top: 5px;
+        }
+         20%{
+            position:relative;
+            top: 6px;
+        }
+        400%{
+            position:relative;
+            top: 4px;
+        }
+        /*
+        60%{
+            position:relative;
+            top: 14px;
+        }
+        90%{
+            position:relative;
+            top: 16px;
+        }
+
+       100%{
+            position:relative;
+            top: 0px;
+        } */
+      }
+    </style>
+</head>
+
+<body>
+    <h1>Calculating Circuit Power</h1>
+    <div class="container">
+        <label for="voltage">Enter The Voltage </label>
+        <input type="text" inputmode="numeric"  name="voltage" id="vol" required>
+
+        <label for="cu">Enter The Current </label>
+        <input type="text" inputmode="numeric" name="current" id="cu" required>
+
+        <button type="button" onclick="power()">Calculate</button>
+    </div>
+    <div id="power1">
+
+    </div>
+    <script>
+        function power() {
+            var vo = document.getElementById("vol").value;
+            var cur = document.getElementById("cu").value;
+
+            var pow = vo * cur;
+
+            var j = document.getElementById("power1");
+            var w = document.createElement("p");
+            var ab = document.createTextNode("The Calculated power is :  " + pow);
+            w.appendChild(ab);
+            
+            j.appendChild(w);
+            j.style.margin='4px';
+            j.style.backgroundColor=" rgba(5, 10, 6, 0.554)";
+            j.style.border='2px solid rgba(0, 255, 255, 0.394)';
+            j.style.textAlign='center';
+            j.style.display="inline-block";
+            j.removeChild(p);
+            
+        }
+
+    </script>
+</body>
+
+</html>

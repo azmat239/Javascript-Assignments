@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circle </title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: green;
+        }
+
+        header {
+            text-align: center;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        header span {
+            color: black;
+            padding: 2px;
+            font-size: larger;
+        }
+
+        #rectangle {
+            height: 400px;
+            width: 1300px;
+            margin-left: 5px;
+            border: 2px solid black;
+            box-shadow: 2px 2px 2px green, 2px 3px 4px gray,
+                4px 5px 6px blue,
+                5px 5px 5px red;
+            background-color: black;
+        }
+
+        #rectangle::after {
+            background-color: red;
+        }
+
+        #rectangle::before {
+            background-color: red;
+        }
+
+        #color {
+            background-color: rgba(0, 213, 255, 0.451);
+            padding: 10px;
+            margin-top: 10px;
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-style: normal;
+            font-weight: bolder;
+            cursor: pointer;
+            position: absolute;
+            right: 50%;
+            bottom: 40%;
+            color: rgba(235, 234, 240, 0.813);
+        }
+
+        p {
+            text-align: center;
+            color: black;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        #color:hover {
+            box-shadow: 2px 2px 2px green,
+                2px 3px 4px gray,
+                4px 5px 6px blue,
+                5px 5px 5px red;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+
+    <header>
+        <h1>Lecture Asssignment </h1>
+        <p> with help of HTML, css and javascript </p>
+        <pre>
+            torightcount :      <span id="torightcount" >   </span>   || todowncountt :  <span id="toDownCount">      </span>  ||  toleftcount :    <span id="toleftcount">   </span> || totalcount :  <span id ="totalcount">   </span>
+        </pre>
+    </header>
+
+
+
+    <div class="container">
+        <div id="rectangle">
+            <span id="circle"></span>
+        </div>
+    </div>
+
+
+
+    <button type="button" id="color" onclick="clicked()">CLick me To see Result </button>
+
+
+
+
+    <script>
+
+
+
+
+        function clicked() {
+
+
+
+            var r = document.getElementById('rectangle');
+            var rwidth = r.clientWidth;
+            var rheight = r.clientHeight;
+
+
+
+            var rmargin = rwidth - 80;
+            var tmargin = rheight + 50;
+            var leftmargin = -10;
+            var topmargin = 140;
+            var newcircle;
+
+
+
+
+
+            function createcircle() {
+                newcircle = document.createElement("span");
+                newcircle.style.display = "inline-block";
+                newcircle.style.border = "2px solid red";
+                newcircle.style.width = "50px";
+                newcircle.style.height = "50px";
+                newcircle.style.borderRadius = "50%";
+                newcircle.style.marginTop = "20px";
+                newcircle.style.position = "absolute";
+            }
+
+
+
+            var torightcountElem = document.getElementById("torightcount");
+            var rightcount1 = 0;
+
+
+
+
+
+            var rightto = setInterval(function () {
+                createcircle();
+                leftmargin += 30;
+                newcircle.style.left = leftmargin + "px";
+                r.appendChild(newcircle);
+
+                rightcount1 += 1;
+                torightcountElem.innerHTML = rightcount1;
+                if (rmargin <= leftmargin) {
+                    clearInterval(rightto);
+                    bottomto1();
+                }
+
+            }, 100);
+
+
+
+
+
+            var bottomelem = document.getElementById("toDownCount");
+            var todown = 0
+
+
+
+
+            function bottomto1() {
+
+
+
+
+                var bottom = setInterval(function () {
+                    createcircle();
+                    newcircle.style.left = leftmargin + "px";
+                    topmargin += 30;
+                    newcircle.style.top = topmargin + "px";
+                    r.appendChild(newcircle);
+
+                    todown += 1;
+                    bottomelem.innerHTML = todown;
+                    if (tmargin <= topmargin) {
+                        clearInterval(bottom);
+                        right();
+                    }
+                }, 100);
+            }
+
+
+            var rightelem = document.getElementById("toleftcount");
+            var rightcount = 0;
+
+
+
+
+            function right() {
+
+
+
+
+                var toright = setInterval(function () {
+                    createcircle();
+                    newcircle.style.left = leftmargin + "px";
+                    newcircle.style.top = topmargin + "px";
+                    leftmargin -= 30;
+                    newcircle.style.right = leftmargin + "px";
+                    r.appendChild(newcircle);
+                    rightcount += 1;
+                    rightelem.innerHTML = rightcount;
+                    if (10 >= leftmargin) {
+                        clearInterval(toright);
+                    }
+                    var total = document.getElementById("totalcount");
+                    var totalcount = rightcount1 + rightcount + todown;
+                    total.innerHTML = totalcount;
+                }, 100);
+            }
+
+
+
+
+            // function totop() {
+
+
+
+
+            //     var totop1 = setInterval(function () {
+            //         createcircle();
+            //         newcircle.style.top = topmargin + "px";
+            //         topmargin -= 30;
+            //         newcircle.style.bottom = topmargin + "px";
+            //         r.appendChild(newcircle);
+
+            //         if (80 >= topmargin) {
+            //             clearInterval(totop1);
+            //         }
+            //     }, 100);
+            // }
+        }
+    </script>
+</body>
+
+</html>
